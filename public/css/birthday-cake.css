@@ -1,0 +1,35 @@
+.birthday-page { padding-block: 72px 88px; }
+.birthday-head { max-width: 660px; margin-bottom: 36px; }
+.birthday-gallery {
+    min-height: 340px;
+    display: grid;
+    place-items: center;
+    padding: 32px;
+    background: var(--white);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+}
+.birthday-empty { max-width: 420px; text-align: center; }
+.birthday-empty__icon { width: 56px; height: 56px; margin: 0 auto 18px; color: var(--rose); }
+.birthday-empty .h2 { margin-bottom: 8px; font-size: clamp(28px, 4vw, 36px); }
+.birthday-empty p { margin: 0; color: var(--muted); }
+.birthday-custom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 48px;
+    padding: 32px;
+    background: var(--cream-2);
+    border-radius: var(--radius);
+}
+.birthday-custom .eyebrow { margin-bottom: 8px; }
+.birthday-custom .h2 { margin-bottom: 8px; font-size: clamp(26px, 3.5vw, 34px); }
+.birthday-custom .lead { margin: 0; }
+.birthday-custom__button { flex: none; white-space: nowrap; }
+
+@media (max-width: 640px) {
+    .birthday-page { padding-block: 48px 64px; }
+    .birthday-gallery { min-height: 280px; padding: 24px 18px; }
+    .birthday-custom { align-items: flex-start; flex-direction: column; padding: 24px; }
+}

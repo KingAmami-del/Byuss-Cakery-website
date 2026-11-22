@@ -1,0 +1,23 @@
+PASANG HALAMAN LOGIN ADMIN (5 langkah)
+
+1. Salin semua folder di zip ini ke project Laravel (app, database, public, resources, routes).
+
+2. Buka routes/web.php, tambahkan di baris paling bawah:
+       require __DIR__ . '/admin.php';
+
+3. Buka file .env, tambahkan akun admin (ganti isinya, pakai kata sandi yang kuat):
+       ADMIN_EMAIL=admin@contoh.com
+       ADMIN_PASSWORD=kata-sandi-kuat-anda
+
+4. Jalankan di terminal (di folder project):
+       php artisan migrate
+       php artisan db:seed --class=AdminSeeder
+
+5. Buka  http://localhost:8000/admin/login  (atau alamat situs Anda + /admin/login)
+
+Catatan:
+- Hanya akun dengan is_admin = true yang bisa masuk. Akun biasa mendapat pesan gagal yang sama.
+- Gagal 5 kali dengan email + IP yang sama -> dikunci 1 menit.
+- Ganti kata sandi admin: ubah ADMIN_PASSWORD di .env lalu jalankan lagi langkah db:seed.
+- Setelah login, admin diarahkan ke /admin (dashboard kosong, siap dikembangkan). Tombol Keluar ada di pojok kanan atas.
+- Setelah mengubah .env, jika memakai cache: php artisan config:clear

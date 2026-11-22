@@ -1,0 +1,108 @@
+/* ===== Halaman katalog ===== */
+.cat { padding-block: 64px 80px; }
+
+.cat__head { max-width: 640px; margin-bottom: 36px; }
+.cat__eyebrow { margin: 0 0 12px; font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--rose); }
+.cat__title { margin: 0 0 12px; font-family: var(--serif); font-weight: 600; font-size: clamp(40px, 6vw, 62px); line-height: 1.05; color: var(--ink); }
+.cat__lead { margin: 0; font-size: 15px; line-height: 1.6; color: var(--muted); }
+
+/* Filter */
+.cat__tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+.cat__tabs { display: inline-flex; padding: 4px; background: var(--white); border: 1px solid var(--line); border-radius: 99px; }
+.cat-tab {
+    display: inline-flex; align-items: center; gap: 8px; padding: 9px 20px; border: 0; border-radius: 99px;
+    background: transparent; color: var(--ink); font: inherit; font-size: 13.5px; font-weight: 500; cursor: pointer;
+    transition: background .15s, color .15s;
+}
+.cat-tab span { font-size: 11px; opacity: .6; }
+.cat-tab.is-on { background: var(--maroon); color: var(--cream); }
+.cat-tab:focus-visible, .cat-chip:focus-visible { outline: 2px solid var(--rose); outline-offset: 2px; }
+
+.cat__search { position: relative; flex: 1 1 260px; max-width: 360px; }
+.cat__search svg { position: absolute; top: 50%; left: 16px; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+.cat__search input {
+    width: 100%; padding: 12px 16px 12px 44px; font: inherit; font-size: 14px; color: var(--ink);
+    background: var(--white); border: 1px solid var(--line); border-radius: 99px; outline: none;
+    transition: border-color .15s, box-shadow .15s;
+}
+.cat__search input:focus { border-color: var(--maroon); box-shadow: 0 0 0 3px rgba(107, 31, 42, .12); }
+
+.cat__chips { display: flex; flex-wrap: nowrap; gap: 8px; margin-bottom: 22px; overflow-x: auto; padding-bottom: 6px; }
+.cat-chip {
+    padding: 8px 16px; border: 1px solid var(--line); border-radius: 99px; background: var(--white);
+    color: var(--ink); font: inherit; font-size: 12.5px; cursor: pointer; flex: none; white-space: nowrap;
+    transition: background .15s, border-color .15s, color .15s;
+}
+.cat-chip:hover { border-color: var(--maroon); }
+.cat-chip.is-on { background: var(--cream-2); border-color: var(--maroon); color: var(--maroon); font-weight: 600; }
+.cat-chip[hidden] { display: none; }
+.cat__count { margin: 0 0 8px; font-size: 12.5px; color: var(--muted); }
+
+/* Kategori */
+.cat-group { margin-top: 44px; scroll-margin-top: 90px; }
+.cat-group[hidden] { display: none; }
+.cat-group__title { display: flex; align-items: baseline; gap: 12px; margin: 0 0 20px; font-family: var(--serif); font-weight: 500; font-size: clamp(28px, 4vw, 36px); color: var(--ink); }
+.cat-group__title small { font-family: var(--sans, inherit); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+.cat-grid {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+}
+.cat-grid:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
+
+/* Kartu produk */
+.pcard {
+    display: flex; flex-direction: column; overflow: hidden; background: var(--white);
+    border: 1px solid var(--line); border-radius: 18px;
+    flex: 0 0 clamp(210px, calc(20% - 11.2px), 320px);
+    scroll-snap-align: start;
+    transition: box-shadow .2s, transform .2s, border-color .2s;
+}
+.pcard[hidden] { display: none; }
+.pcard:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(107, 31, 42, .1); border-color: #dcc7b8; }
+.pcard.is-hl { border-color: var(--maroon); box-shadow: 0 0 0 2px var(--maroon), 0 14px 34px rgba(107, 31, 42, .15); }
+
+.pcard__photo { aspect-ratio: 4 / 3; overflow: hidden; background: var(--cream-2); }
+.pcard__photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s; }
+.pcard[data-slug="croissant-strawberry-cream"] .pcard__photo img {
+    object-position: 50% 58%;
+}
+.pcard:hover .pcard__photo img { transform: scale(1.04); }
+.pcard__photo.is-empty {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--muted);
+    background: repeating-linear-gradient(135deg, var(--cream-2) 0 12px, var(--cream) 12px 24px);
+}
+.pcard__photo.is-empty span { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+
+.pcard__body { display: flex; flex: 1; flex-direction: column; padding: 16px; }
+.pcard__group { margin: 0 0 6px; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.pcard__name { margin: 0 0 6px; font-family: var(--serif); font-weight: 600; font-size: 24px; line-height: 1.15; color: var(--maroon); }
+.pcard__desc { margin: 0 0 14px; font-size: 13px; line-height: 1.55; color: var(--muted); }
+.pcard__status { margin: -6px 0 12px; color: #a3261a; font-size: 12px; font-weight: 600; }
+.pcard__only { margin: 0 0 14px; font-size: 12px; color: var(--muted); }
+.pcard .kq-seg { margin-bottom: 14px; }
+.pcard__foot { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+.pcard__price { font-size: 15px; color: var(--ink); }
+.pcard__soon { font-size: 12px; color: var(--muted); }
+.pcard__add { display: inline-flex; align-items: center; gap: 8px; }
+.pcard__add svg { flex: none; }
+.pcard__add.is-done { background: #2f6b46; border-color: #2f6b46; }
+.pcard__add:disabled { background: #9c8b84; border-color: #9c8b84; cursor: not-allowed; }
+
+.cat__empty { margin-top: 56px; padding: 48px 20px; text-align: center; background: var(--white); border: 1px dashed var(--line); border-radius: 18px; }
+.cat__empty[hidden] { display: none; }
+.cat__empty p { margin: 0 0 16px; color: var(--muted); }
+
+@media (max-width: 640px) {
+    .cat { padding-block: 44px 64px; }
+    .cat__tabs { width: 100%; }
+    .cat-tab { flex: 1; justify-content: center; padding-inline: 10px; }
+    .cat__search { max-width: none; }
+    .cat-grid { gap: 12px; }
+    .pcard { flex-basis: min(82vw, 280px); }
+    .cat__chips { margin-inline: -4px; padding: 0 4px 6px; scrollbar-width: none; }
+}
